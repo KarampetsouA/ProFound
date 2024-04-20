@@ -15,7 +15,7 @@
 <br>
 - **Technical Professional Page**
   
-![TP](https://github.com/KarampetsouA/ProFound/assets/165062226/4c3b89aa-1380-4bc8-ad15-e3b722503071)
+![TP](https://github.com/KarampetsouA/ProFound/assets/165062226/2e5e791c-557f-46dc-b029-5370c34cc9e7)
 <br>
 - **Customer Support Page**
   
