@@ -81,9 +81,9 @@ public class Customer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestsMouseClicked
-      Coach_Formations a = new Coach_Formations();
-      a.setVisible(true);
-      this.dispose();
+       CustomerRequests a =  new CustomerRequests();
+       a.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_requestsMouseClicked
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
@@ -93,21 +93,21 @@ public class Customer extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutMouseClicked
 
     private void reviewsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reviewsMouseClicked
-        Coach_Squad a = new Coach_Squad();
+        CustomerReview a = new CustomerReview();
         a.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_reviewsMouseClicked
 
     private void searchTechnicalProfessionalsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTechnicalProfessionalsMouseClicked
-       Coach_TrainingPrograms a =  new Coach_TrainingPrograms();
+       CustomerTechnicalProfessionalSearch a =  new CustomerTechnicalProfessionalSearch();
        a.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_searchTechnicalProfessionalsMouseClicked
 
     private void myProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myProfileMouseClicked
-       Coach_InsertData a =  new Coach_InsertData();
-       a.setVisible(true);
-       this.dispose();
+        CustomerMyProfile a = new CustomerMyProfile();
+        a.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_myProfileMouseClicked
 
     /**
