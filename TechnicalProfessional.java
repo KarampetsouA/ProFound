@@ -93,15 +93,21 @@ public class TechnicalProfessional extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutMouseClicked
 
     private void servicesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_servicesMouseClicked
-      
+        TPServices a = new TPServices();
+        a.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_servicesMouseClicked
 
     private void reviewsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reviewsMouseClicked
-        // TODO add your handling code here:
+        TPReview a = new TPReview();
+        a.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_reviewsMouseClicked
 
     private void myProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myProfileMouseClicked
-        // TODO add your handling code here:
+        TPMyProfile a = new TPMyProfile();
+        a.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_myProfileMouseClicked
 
     /**
