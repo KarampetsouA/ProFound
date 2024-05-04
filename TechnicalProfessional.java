@@ -81,7 +81,7 @@ public class TechnicalProfessional extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestsMouseClicked
-        Nutrinionist_NutritionProgram a = new Nutrinionist_NutritionProgram();
+        TPRequests a = new TPRequests();
         a.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_requestsMouseClicked
@@ -93,9 +93,7 @@ public class TechnicalProfessional extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutMouseClicked
 
     private void servicesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_servicesMouseClicked
-        Nutrinionist_NutritionDashboard a = new Nutrinionist_NutritionDashboard();
-        a.setVisible(true);
-        this.dispose();
+      
     }//GEN-LAST:event_servicesMouseClicked
 
     private void reviewsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reviewsMouseClicked
