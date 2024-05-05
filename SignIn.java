@@ -105,10 +105,9 @@ public class SignIn extends javax.swing.JFrame {
         
          if(jComboBox_Type.getSelectedItem().equals("Customer"))
          {
-             pst=con.prepareStatement("select * from users where username=? and password=? and userType=? ");
+             pst=con.prepareStatement("select * from customers where username=? and password=?");
              pst.setString(1, user);
              pst.setString(2, pass);
-             pst.setString(3, type);
              rs = pst.executeQuery();
              
              if (rs.next())
@@ -129,10 +128,9 @@ public class SignIn extends javax.swing.JFrame {
          else if (jComboBox_Type.getSelectedItem().equals("Technical Professional"))
          {
              
-              pst=con.prepareStatement("select * from users where username=? and password=? and userType=? ");
+              pst=con.prepareStatement("select * from techprof where username=? and password=? ");
              pst.setString(1, user);
              pst.setString(2, pass);
-             pst.setString(3, type);
              rs = pst.executeQuery();
              
              if (rs.next())
@@ -152,10 +150,9 @@ public class SignIn extends javax.swing.JFrame {
               else if (jComboBox_Type.getSelectedItem().equals("Customer Support"))
          {
              
-              pst=con.prepareStatement("select * from users where username=? and password=? and userType=? ");
+              pst=con.prepareStatement("select * from customer_support where username=? and password=? and userType=? ");
              pst.setString(1, user);
              pst.setString(2, pass);
-             pst.setString(3, type);
              rs = pst.executeQuery();
              
              if (rs.next())
@@ -175,10 +172,9 @@ public class SignIn extends javax.swing.JFrame {
                else if (jComboBox_Type.getSelectedItem().equals("System Admin"))
          {
              
-              pst=con.prepareStatement("select * from users where username=? and password=? and userType=? ");
+              pst=con.prepareStatement("select * from admin where username=? and password=? and userType=? ");
              pst.setString(1, user);
              pst.setString(2, pass);
-             pst.setString(3, type);
              rs = pst.executeQuery();
              
              if (rs.next())
