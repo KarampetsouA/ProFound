@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2024 at 01:50 PM
+-- Generation Time: May 05, 2024 at 12:41 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -20,6 +20,109 @@ SET time_zone = "+00:00";
 --
 -- Database: `profound`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(10) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `fullname` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `email`, `fullname`) VALUES
+(1, 'JS', '1234', 'js@ceid.gr', 'John S.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` int(10) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `fullname`, `username`, `password`, `email`) VALUES
+(1, 'Natassa K.', 'NK', '1234', 'nk@ceid.gr');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_request`
+--
+
+CREATE TABLE `customer_request` (
+  `id` int(10) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `tp_id` int(11) NOT NULL,
+  `tp_service` int(11) NOT NULL,
+  `tp_location` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer_request`
+--
+
+INSERT INTO `customer_request` (`id`, `customer_id`, `tp_id`, `tp_service`, `tp_location`) VALUES
+(1, 1, 1, 2, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_review`
+--
+
+CREATE TABLE `customer_review` (
+  `id` int(10) NOT NULL,
+  `tp_request` int(10) NOT NULL,
+  `review` enum('1 star','2 stars','3 stars','4 stars','5 stars') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer_review`
+--
+
+INSERT INTO `customer_review` (`id`, `tp_request`, `review`) VALUES
+(1, 1, '4 stars');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_support`
+--
+
+CREATE TABLE `customer_support` (
+  `id` int(10) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer_support`
+--
+
+INSERT INTO `customer_support` (`id`, `fullname`, `username`, `password`, `email`) VALUES
+(1, 'Byron K.', 'BK', '1234', 'bk@ceid.gr');
 
 -- --------------------------------------------------------
 
@@ -67,29 +170,63 @@ INSERT INTO `technicalprofessionalsservices` (`id`, `service`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `techprof`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `techprof` (
+  `id` int(10) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `fullname` varchar(255) NOT NULL,
-  `userType` enum('Customer','Technical Professional','Customer Support','System Admin') NOT NULL
+  `email` varchar(255) NOT NULL,
+  `phone` bigint(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `techprof`
 --
 
-INSERT INTO `users` (`username`, `password`, `fullname`, `userType`) VALUES
-('BC', '1234', 'Byron Caberos', 'Customer Support'),
-('JS', '1234', 'John  Stathias', 'System Admin'),
-('NK', '1234', 'Natassa Karampetsou', 'Customer'),
-('VL', '1234', 'Vasilis Liotas', 'Technical Professional');
+INSERT INTO `techprof` (`id`, `fullname`, `username`, `password`, `email`, `phone`) VALUES
+(1, 'Vassilis L.', 'VL', '1234', 'vl@ceid.gr', 6912345678);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customer_request`
+--
+ALTER TABLE `customer_request`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `customer` (`customer_id`),
+  ADD KEY `tp` (`tp_id`),
+  ADD KEY `tploc` (`tp_location`),
+  ADD KEY `tpserv` (`tp_service`);
+
+--
+-- Indexes for table `customer_review`
+--
+ALTER TABLE `customer_review`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cust_req` (`tp_request`);
+
+--
+-- Indexes for table `customer_support`
+--
+ALTER TABLE `customer_support`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `technicalprofessionalslocation`
@@ -104,14 +241,44 @@ ALTER TABLE `technicalprofessionalsservices`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `techprof`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`username`);
+ALTER TABLE `techprof`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `customer_request`
+--
+ALTER TABLE `customer_request`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `customer_review`
+--
+ALTER TABLE `customer_review`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `customer_support`
+--
+ALTER TABLE `customer_support`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `technicalprofessionalslocation`
@@ -124,6 +291,43 @@ ALTER TABLE `technicalprofessionalslocation`
 --
 ALTER TABLE `technicalprofessionalsservices`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `techprof`
+--
+ALTER TABLE `techprof`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `customer_request`
+--
+ALTER TABLE `customer_request`
+  ADD CONSTRAINT `customer` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tp` FOREIGN KEY (`tp_id`) REFERENCES `techprof` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tploc` FOREIGN KEY (`tp_location`) REFERENCES `technicalprofessionalslocation` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tpserv` FOREIGN KEY (`tp_service`) REFERENCES `technicalprofessionalsservices` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `customer_review`
+--
+ALTER TABLE `customer_review`
+  ADD CONSTRAINT `cust_req` FOREIGN KEY (`tp_request`) REFERENCES `customer_request` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `technicalprofessionalslocation`
+--
+ALTER TABLE `technicalprofessionalslocation`
+  ADD CONSTRAINT `profuser` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `technicalprofessionalsservices`
+--
+ALTER TABLE `technicalprofessionalsservices`
+  ADD CONSTRAINT `user` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
