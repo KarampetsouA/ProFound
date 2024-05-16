@@ -150,7 +150,7 @@ public class SignIn extends javax.swing.JFrame {
               else if (jComboBox_Type.getSelectedItem().equals("Customer Support"))
          {
              
-              pst=con.prepareStatement("select * from customer_support where username=? and password=? and userType=? ");
+              pst=con.prepareStatement("select * from customer_support where username=? and password=?");
              pst.setString(1, user);
              pst.setString(2, pass);
              rs = pst.executeQuery();
@@ -172,7 +172,7 @@ public class SignIn extends javax.swing.JFrame {
                else if (jComboBox_Type.getSelectedItem().equals("System Admin"))
          {
              
-              pst=con.prepareStatement("select * from admin where username=? and password=? and userType=? ");
+              pst=con.prepareStatement("select * from admin where username=? and password=?");
              pst.setString(1, user);
              pst.setString(2, pass);
              rs = pst.executeQuery();
