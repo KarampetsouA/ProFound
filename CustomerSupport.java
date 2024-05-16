@@ -81,7 +81,7 @@ public class CustomerSupport extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestsMouseClicked
-        Player_MyCalendar a = new Player_MyCalendar();
+        CustomerSupportRequests a = new CustomerSupportRequests();
         a.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_requestsMouseClicked
@@ -93,18 +93,20 @@ public class CustomerSupport extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutMouseClicked
 
     private void callsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_callsMouseClicked
-        Player_Stats a = new Player_Stats();
+        CustomerSupportCalls a = new CustomerSupportCalls();
         a.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_callsMouseClicked
 
     private void customersListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customersListMouseClicked
-        Player_Feedback a = new Player_Feedback();
+        CustomerSupportCustomersList a = new CustomerSupportCustomersList();
         a.setVisible(true);
         this.dispose();    }//GEN-LAST:event_customersListMouseClicked
 
     private void technicalProfessionalsListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_technicalProfessionalsListMouseClicked
-        // TODO add your handling code here:
+        CustomerSupportTPList a = new CustomerSupportTPList();
+        a.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_technicalProfessionalsListMouseClicked
 
     /**
