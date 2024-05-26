@@ -49,9 +49,19 @@ public class SystemAdmin extends javax.swing.JFrame {
         getContentPane().add(customerSupport, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 170, 20));
 
         customers.setText(" ");
+        customers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customersMouseClicked(evt);
+            }
+        });
         getContentPane().add(customers, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 100, 20));
 
         reviews.setText(" ");
+        reviews.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reviewsMouseClicked(evt);
+            }
+        });
         getContentPane().add(reviews, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 80, 30));
 
         logout.setText(" ");
@@ -71,9 +81,9 @@ public class SystemAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void technicalProfessionalsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_technicalProfessionalsMouseClicked
-        Physiotherapist_StengthEx a = new Physiotherapist_StengthEx();
-        a.setVisible(true);
-        this.dispose();
+       SystemAdminTP a = new SystemAdminTP();
+       a.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_technicalProfessionalsMouseClicked
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
@@ -83,10 +93,22 @@ public class SystemAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutMouseClicked
 
     private void customerSupportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerSupportMouseClicked
-        Physiotherapist_InjuryEx a = new Physiotherapist_InjuryEx();
-        a.setVisible(true);
-        this.dispose();
+       SystemAdminCustomerSupport a = new SystemAdminCustomerSupport();
+       a.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_customerSupportMouseClicked
+
+    private void customersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customersMouseClicked
+        SystemAdminCustomer a = new SystemAdminCustomer();
+       a.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_customersMouseClicked
+
+    private void reviewsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reviewsMouseClicked
+       SystemAdminReviews a = new SystemAdminReviews();
+       a.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_reviewsMouseClicked
 
     /**
      * @param args the command line arguments
