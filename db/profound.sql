@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2024 at 12:41 PM
+-- Generation Time: May 26, 2024 at 12:59 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `email`, `fullname`) VALUES
-(1, 'JS', '1234', 'js@ceid.gr', 'John S.');
+(1, 'JS', '1234', 'js@profound.gr', 'John S.');
 
 -- --------------------------------------------------------
 
@@ -61,7 +61,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `fullname`, `username`, `password`, `email`) VALUES
-(1, 'Natassa K.', 'NK', '1234', 'nk@ceid.gr');
+(1, 'Natassa K.', 'NK', '1234', 'nk@profound.gr');
 
 -- --------------------------------------------------------
 
@@ -122,7 +122,27 @@ CREATE TABLE `customer_support` (
 --
 
 INSERT INTO `customer_support` (`id`, `fullname`, `username`, `password`, `email`) VALUES
-(1, 'Byron K.', 'BK', '1234', 'bk@ceid.gr');
+(1, 'Byron K.', 'BK', '1234', 'bk@profound.gr');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_support_request`
+--
+
+CREATE TABLE `customer_support_request` (
+  `id` int(255) NOT NULL,
+  `customer_support` int(10) NOT NULL,
+  `customer_request_id` int(255) NOT NULL,
+  `customer_phone` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer_support_request`
+--
+
+INSERT INTO `customer_support_request` (`id`, `customer_support`, `customer_request_id`, `customer_phone`) VALUES
+(2, 1, 1, 691234567);
 
 -- --------------------------------------------------------
 
@@ -187,7 +207,7 @@ CREATE TABLE `techprof` (
 --
 
 INSERT INTO `techprof` (`id`, `fullname`, `username`, `password`, `email`, `phone`) VALUES
-(1, 'Vassilis L.', 'VL', '1234', 'vl@ceid.gr', 6912345678);
+(1, 'Vassilis L.', 'VL', '1234', 'vl@profound.gr', 6912345678);
 
 --
 -- Indexes for dumped tables
@@ -227,6 +247,14 @@ ALTER TABLE `customer_review`
 --
 ALTER TABLE `customer_support`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customer_support_request`
+--
+ALTER TABLE `customer_support_request`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `customer_r_id` (`customer_request_id`),
+  ADD KEY `customer_support_empl` (`customer_support`);
 
 --
 -- Indexes for table `technicalprofessionalslocation`
@@ -281,6 +309,12 @@ ALTER TABLE `customer_support`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `customer_support_request`
+--
+ALTER TABLE `customer_support_request`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `technicalprofessionalslocation`
 --
 ALTER TABLE `technicalprofessionalslocation`
@@ -316,6 +350,13 @@ ALTER TABLE `customer_request`
 --
 ALTER TABLE `customer_review`
   ADD CONSTRAINT `cust_req` FOREIGN KEY (`tp_request`) REFERENCES `customer_request` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `customer_support_request`
+--
+ALTER TABLE `customer_support_request`
+  ADD CONSTRAINT `customer_r_id` FOREIGN KEY (`customer_request_id`) REFERENCES `customer_request` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `customer_support_empl` FOREIGN KEY (`customer_support`) REFERENCES `customer_support` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `technicalprofessionalslocation`
